@@ -1,48 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: efarias- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/07 11:20:08 by efarias-          #+#    #+#             */
-/*   Updated: 2025/02/10 10:58:52 by efarias-         ###   ########.fr       */
+/*   Created: 2025/02/08 14:57:06 by efarias-          #+#    #+#             */
+/*   Updated: 2025/02/08 18:25:13 by efarias-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
-#include <limits.h>
-
-void	ft_putchar(char c)
+int	ft_atoi(char *str)
 {
-	write(1, &c, 1);
-}
+	int	i;
+	int	result;
+	int	sign;
 
-void	ft_putnbr(int nb)
-{
-	if (nb == INT_MIN)
+	i = 0;
+	result = 0;
+	sign = 1;
+	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	while (str[i] == '-' || str[i] == '+')
 	{
-		ft_putchar('-');
-		ft_putnbr(-(nb / 10));
-		ft_putchar('0' - (nb % 10));
-		return ;
+		if (str[i] == '-')
+			sign *= -1;
+		i++;
 	}
-	if (nb < 0)
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		nb = -nb;
-		ft_putchar('-');
+		result = (result * 10) + (str[i] - '0');
+		i++;
 	}
-	if (nb < 10)
-	{
-		ft_putchar(nb + '0');
-	}
-	else
-	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
-	}
+	return (sign * result);
 }
 /*
 int	main(void)
 {
-	ft_putnbr(-42);
+	char	str[] = "hello";
+	int	num = ft_atoi(str);
+
+	printf("%d", num);
 }*/

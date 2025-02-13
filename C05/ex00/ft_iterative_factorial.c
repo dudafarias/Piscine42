@@ -1,48 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: efarias- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/07 11:20:08 by efarias-          #+#    #+#             */
-/*   Updated: 2025/02/10 10:58:52 by efarias-         ###   ########.fr       */
+/*   Created: 2025/02/10 15:35:51 by efarias-          #+#    #+#             */
+/*   Updated: 2025/02/11 16:52:11 by efarias-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
-#include <limits.h>
-
+/*
 void	ft_putchar(char c)
 {
-	write(1, &c, 1);
+	write (1, &c, 1);
 }
-
-void	ft_putnbr(int nb)
+*/
+int	ft_iterative_factorial(int nb)
 {
-	if (nb == INT_MIN)
-	{
-		ft_putchar('-');
-		ft_putnbr(-(nb / 10));
-		ft_putchar('0' - (nb % 10));
-		return ;
-	}
+	int	i;
+	int	a;
+
+	i = 0;
+	a = 1;
 	if (nb < 0)
 	{
-		nb = -nb;
-		ft_putchar('-');
+		return (0);
 	}
-	if (nb < 10)
+	while (++i <= nb)
 	{
-		ft_putchar(nb + '0');
+		a = a * i;
+	}
+	return (a);
+}
+
+/*void	ft_putnbr(int x)
+{
+	if (x < 10)
+	{
+		ft_putchar(x + '0');
 	}
 	else
 	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
+		ft_putnbr(x / 10);
+		ft_putnbr(x % 10);
 	}
 }
-/*
 int	main(void)
 {
-	ft_putnbr(-42);
+	int	n;
+
+	n = ft_iterative_factorial(10);
+	ft_putnbr(n);
+	write(1, &n, 1);
 }*/

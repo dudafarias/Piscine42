@@ -1,48 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_print_program_name.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: efarias- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/07 11:20:08 by efarias-          #+#    #+#             */
-/*   Updated: 2025/02/10 10:58:52 by efarias-         ###   ########.fr       */
+/*   Created: 2025/02/11 17:48:38 by efarias-          #+#    #+#             */
+/*   Updated: 2025/02/11 18:20:58 by efarias-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
-#include <limits.h>
 
-void	ft_putchar(char c)
+int	main(int argc, char *argv[])
 {
-	write(1, &c, 1);
-}
+	int	i;
 
-void	ft_putnbr(int nb)
-{
-	if (nb == INT_MIN)
+	(void)argc;
+	i = 0;
+	while (argv[0][i] != '\0')
 	{
-		ft_putchar('-');
-		ft_putnbr(-(nb / 10));
-		ft_putchar('0' - (nb % 10));
-		return ;
+		write (1, &argv[0][i], 1);
+		i++;
 	}
-	if (nb < 0)
-	{
-		nb = -nb;
-		ft_putchar('-');
-	}
-	if (nb < 10)
-	{
-		ft_putchar(nb + '0');
-	}
-	else
-	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
-	}
+	write(1, "\n", 1);
+	return (0);
 }
-/*
-int	main(void)
-{
-	ft_putnbr(-42);
-}*/

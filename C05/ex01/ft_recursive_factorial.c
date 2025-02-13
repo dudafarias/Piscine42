@@ -1,48 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: efarias- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/07 11:20:08 by efarias-          #+#    #+#             */
-/*   Updated: 2025/02/10 10:58:52 by efarias-         ###   ########.fr       */
+/*   Created: 2025/02/10 18:36:24 by efarias-          #+#    #+#             */
+/*   Updated: 2025/02/11 16:52:51 by efarias-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
-#include <limits.h>
-
+/*
 void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
-
-void	ft_putnbr(int nb)
+*/
+int	ft_recursive_factorial(int nb)
 {
-	if (nb == INT_MIN)
-	{
-		ft_putchar('-');
-		ft_putnbr(-(nb / 10));
-		ft_putchar('0' - (nb % 10));
-		return ;
-	}
 	if (nb < 0)
+		return (0);
+	if (nb == 0 || nb == 1)
+		return (1);
+	return (nb * ft_recursive_factorial(nb -1));
+}
+/*
+void	ft_putnbr(int n)
+{
+	if (n < 10)
 	{
-		nb = -nb;
-		ft_putchar('-');
-	}
-	if (nb < 10)
-	{
-		ft_putchar(nb + '0');
+		ft_putchar(n + '0');
 	}
 	else
 	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
+		ft_putnbr(n / 10);
+		ft_putnbr(n % 10);
 	}
 }
-/*
+
 int	main(void)
 {
-	ft_putnbr(-42);
+	int	i;
+
+	i = ft_recursive_factorial(10);
+	ft_putnbr(i);
 }*/
